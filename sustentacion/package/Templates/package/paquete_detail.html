@@ -1,0 +1,81 @@
+{% extends 'core/Base.html' %}
+{% load static %}
+
+
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+
+
+{% block Banner_area_start %}
+
+     <!--================Hero Banner SM Area Start =================-->
+  <section class="hero-banner-sm magic-ball magic-ball-banner" id="parallax-1" data-anchor-target="#parallax-1" data-300-top="background-position: 0px -80px" data-top-bottom="background-position: 0 100px">
+    <div class="container">
+      <div class="hero-banner-sm-content">
+        <h1>Paquete</h1>
+        <p>Air seed winged lights saw kind whales in sixth best a dont seas dron image so fish all tree on</p>
+      </div>
+    </div>
+  </section>
+  <!--================Hero Banner SM Area End =================-->
+
+{% endblock %}
+
+
+{% block content %}
+
+
+
+  <!--================Tour section Start =================-->
+
+
+  <section class="blog_area single-post-area section-margin">
+			<div class="container">
+					<div class="row">
+							<div class="col-lg-8 posts-list">
+									<div class="single-post">
+													<div class="feature-img">
+															<img class="img-fluid" src="{{ paquete.imagen.url}}" alt="">
+													</div>
+											<div class="blog_details">
+													<h2>{{ paquete.titulo }}</h2>
+                          <ul class="blog-info-link mt-3 mb-4">
+
+                              <li> {% for x in paquete.categoria.all %}
+                                    <a href="#" class="far fa-user">
+                                        {{ x.nombre }}
+                                    </a>
+                                        {% if not forloop.last  %}
+                                            /
+                                        {% endif %}
+                              {% endfor %} </li>
+
+                              <li class="date">{{ paquete.fecha_creacion }} </li>
+                              <li>Publicado por {{ paquete.usuario }}</li>
+                            </ul>
+
+                          <div class="quote-wrapper">
+                            <div class="quotes">
+                              {{ paquete.Contenido|safe}}
+                            </div>
+                          </div>
+
+                  </div>
+
+
+
+											</div>
+
+
+                            <a href="{% url 'package' %}" class="button  button-contactForm"> ↩ Regresar </a>
+									</div>
+ <aside> <a href="#" class="button  button-contactForm"> Conseguir ✚ </a> </aside>
+							</div>
+
+					</div>
+        </section>
+
+  <!--================Tour section End =================-->
+
+{% endblock %}
+

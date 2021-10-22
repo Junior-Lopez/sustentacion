@@ -1,0 +1,77 @@
+{% extends 'core/Base.html' %}
+{% load static %}
+
+{% block Banner_area_start %}
+
+    <!--================Hero Banner SM Area Start =================-->
+  <section class="hero-banner-sm magic-ball magic-ball-banner" id="parallax-1" data-anchor-target="#parallax-1" data-300-top="background-position: 0px -80px" data-top-bottom="background-position: 0 100px">
+    <div class="container">
+      <div class="hero-banner-sm-content">
+        <h1>Blog Single</h1>
+        <p>Air seed winged lights saw kind whales in sixth best a dont seas dron image so fish all tree on</p>
+      </div>
+    </div>
+  </section>
+  <!--================Hero Banner SM Area End =================-->
+
+{% endblock %}
+
+{% block content %}
+
+    <!--================Blog Area =================-->
+    {% for publicaciones in object_list %}
+
+        <section class="blog_area single-post-area section-margin">
+			<div class="container">
+                <div class="single-post">
+                    <div class="feature-img">
+                        <img class="img-fluid" src="{{ publicaciones.imagen.url}}" alt="">
+                    </div>
+                    <div class="blog_details">
+                        <h2>{{ publicaciones.titulo }}</h2>
+                          <ul class="blog-info-link mt-3 mb-4">
+
+                              <li> {% for x in publicaciones.categoria.all %}
+                                    <a href="{% url 'category' publicaciones.id %}" class="far fa-user">
+                                        {{ x.nombre }}
+                                    </a>
+                                        {% if not forloop.last  %}
+                                            /
+                                        {% endif %}
+                              {% endfor %} </li>
+
+                              <li class="date">{{ publicaciones.fecha_publicidad }} </li>
+                              <li>Publicado por {{ publicaciones.usuario }}</li>
+                            </ul>
+
+                          <div class="quote-wrapper">
+                            <div class="quotes">
+                              {{ publicaciones.Contenido|safe}}
+                            </div>
+                          </div>
+
+                  </div>
+
+
+
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endfor %}
+	<!--================Blog Area =================-->
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

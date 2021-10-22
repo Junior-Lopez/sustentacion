@@ -1,0 +1,36 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block Banner_area_start %}
+
+     <!--================Hero Banner SM Area Start =================-->
+  <section class="hero-banner-sm magic-ball magic-ball-banner" id="parallax-1" data-anchor-target="#parallax-1" data-300-top="background-position: 0px -80px" data-top-bottom="background-position: 0 100px">
+    <div class="container">
+      <div class="hero-banner-sm-content">
+          <h1>¿Estás seguro de que quieres borrar "{{ object }}"?</h1>
+
+
+      </div>
+    </div>
+
+        <div class="container">
+            <div class="row mt-3">
+                <div class="col-md-9 mx-auto">
+                    <div>
+                        <form action="" method="post">{% csrf_token %}
+                            <input type="submit" class="button" value="Sí, borrar la página" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+  </section>
+  <!--================Hero Banner SM Area End =================-->
+
+{% endblock %}
+
+
+

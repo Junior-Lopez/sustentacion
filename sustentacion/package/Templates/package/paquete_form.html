@@ -1,0 +1,46 @@
+{% extends 'core/Base.html' %}
+{% load static %}
+
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+
+
+{% block Banner_area_start %}
+
+     <section class="hero-banner-sm magic-ball magic-ball-banner" id="parallax-1" data-anchor-target="#parallax-1" data-300-top="background-position: 0px -80px" data-top-bottom="background-position: 0 100px">
+    <div class="container">
+      <div class="hero-banner-sm-content">
+        <h1>Secciòn Crear Pagina</h1>
+        <p>Air seed winged lights saw kind whales in sixth best a dont seas dron image so fish all tree on</p>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
+
+
+{% block content %}
+<section class="section-margin">
+    <div class="container">
+
+                <div class="col-md-9 mx-auto">
+                    <div>
+                        <form action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="col-sm-6">
+                            <div class="form-group">
+                            <table>
+                                {{ form.as_table }}
+                            </table>
+                            </div>
+                            </div>
+                            <br>
+                            <button type="submit" class="button button-contactForm">Crear</button>
+                        </form>
+                    </div>
+                </div>
+
+    </div>
+</section>
+
+{% endblock %}

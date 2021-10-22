@@ -1,0 +1,43 @@
+{% extends 'core/Base.html' %}
+{% load static %}
+
+{% block Banner_area_start %}
+
+     <!--================Hero Banner SM Area Start =================-->
+  <section class="hero-banner-sm magic-ball magic-ball-banner" id="parallax-1" data-anchor-target="#parallax-1" data-300-top="background-position: 0px -80px" data-top-bottom="background-position: 0 100px">
+    <div class="container">
+      <div class="hero-banner-sm-content">
+        <h1>Inicio de Sección</h1>
+      </div>
+    </div>
+  </section>
+  <!--================Hero Banner SM Area End =================-->
+
+{% endblock %}
+
+{% block content %}
+    <style>.errorlist{color:red;}</style>
+    <main role="main">
+        <div class="container">
+            <div class="row mt-3">
+                <div class="col-md-9 mx-auto mb-5">
+                    <form action="" method="post">{% csrf_token %}
+
+                        {% if form.non_field_errors %}
+                            <p style="color:red">Usuario o contraseña incorrectos, prueba de nuevo.</p>
+                        {% endif %}
+                        <p>
+                            <input type="text" name="username" autofocus maxlength="254" required
+                                   id="id_username" class="form-control" placeholder="Nombre de usuario"/>
+                        </p>
+                        <p>
+                            <input type="password" name="password" required
+                                   id="id_password" class="form-control" placeholder="Contraseña"/>
+                        </p>
+                        <p><input type="submit" class="btn button btn-block" value="Acceder"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

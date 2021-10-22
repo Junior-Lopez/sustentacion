@@ -1,0 +1,112 @@
+{% extends 'core/Base.html' %}
+{% load static %}
+
+
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+
+
+{% block Banner_area_start %}
+
+     <!--================Hero Banner SM Area Start =================-->
+  <section class="hero-banner-sm magic-ball magic-ball-banner" id="parallax-1" data-anchor-target="#parallax-1" data-300-top="background-position: 0px -80px" data-top-bottom="background-position: 0 100px">
+    <div class="container">
+      <div class="hero-banner-sm-content">
+        <h1>Packages</h1>
+        <p>Air seed winged lights saw kind whales in sixth best a dont seas dron image so fish all tree on</p>
+      </div>
+    </div>
+  </section>
+  <!--================Hero Banner SM Area End =================-->
+
+{% endblock %}
+
+
+
+
+{% block content %}
+
+
+    <section class="section-margin">
+    <div class="container">
+      <div class="section-intro text-center pb-90px">
+        <img class="section-intro-img" src="{% static 'core/img/home/section-icon.png' %}" alt="">
+        <h2>Our Popular Services</h2>
+        <p>Fowl have fruit moveth male they are that place you will lesser</p>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+          <div class="service-card text-center">
+            <div class="service-card-img">
+              <img class="img-fluid" src="{% static 'core/img/home/service1.png' %}" alt="">
+            </div>
+            <div class="service-card-body">
+              <h3>Hotel Booking</h3>
+              <p>Great so dominion two seed give dry rule be fowl him female you will gathered creeping and created air</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+          <div class="service-card text-center">
+            <div class="service-card-img">
+              <img class="img-fluid" src="{% static 'core/img/home/service2.png' %}" alt="">
+            </div>
+            <div class="service-card-body">
+              <h3>Flight Booking</h3>
+              <p>Great so dominion two seed give dry rule be fowl him female you will gathered creeping and created air</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+          <div class="service-card text-center">
+            <div class="service-card-img">
+              <img class="img-fluid" src="{% static 'core/img/home/service3.png' %}" alt="">
+            </div>
+            <div class="service-card-body">
+              <h3>Destination Booking</h3>
+              <p>Great so dominion two seed give dry rule be fowl him female you will gathered creeping and created air</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!--================Tour section Start =================-->
+   {% for paquete in object_list %}
+  <section class="section-margin">
+  <div class="container">
+
+
+
+             <div class="tour-card">
+            <img class="card-img rounded-0" src="{{ paquete.imagen.url}}" alt="">
+            <div class="tour-card-overlay">
+              <div class="media">
+                <div class="media-body">
+                  <h1>{{ paquete.nombre}}</h1>
+
+                  <small>{{  paquete.comentario }}</small>
+
+                </div>
+                <div class="media-price">
+                  <h4 class="text-primary">${{ paquete.precio }}/day</h4>
+                    <p><a href="{% url 'pack' paquete.id %}" class="text-primary">Leer más</a></p>
+                            {% if request.user.is_staff %}
+                                <p><a href="{% url 'update' paquete.id %}" class="text-primary">Editar</a></p>
+                                <p><a href="{% url 'delete' paquete.id %}" class="text-primary">Borrar</a></p>
+                            {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+</section>
+    {% endfor %}
+  <!--================Tour section End =================-->
+{% endblock %}
+
+
